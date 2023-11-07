@@ -13,6 +13,7 @@ class AnilistApi {
                         title {
                             english
                             native
+                            romaji
                         }
                         description
                         episodes
@@ -22,6 +23,7 @@ class AnilistApi {
                         }
                         genres
                         averageScore
+                        isAdult
                     }
                 }
             }

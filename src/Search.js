@@ -20,6 +20,7 @@ function Search(){
         const title = `${formData.search}`;
         const result = await AnilistApi.search(title);
         console.log(result)
+        
         setSearchData(result)
         return result;
     }

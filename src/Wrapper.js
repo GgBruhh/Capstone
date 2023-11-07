@@ -1,5 +1,4 @@
 import React from 'react';
-import ShowList from './ShowList';
 import Search from './Search';
 
 function Wrapper(){

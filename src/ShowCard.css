@@ -1,0 +1,20 @@
+.show-card{
+    background-color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-a{
+    height: auto;
+    display: grid;
+}
+
+.card-img{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+
