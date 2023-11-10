@@ -18,7 +18,7 @@ function Search(){
         e.preventDefault();
         console.log(formData);
         const title = `${formData.search}`;
-        const result = await AnilistApi.search(title);
+        const result = await AnilistApi.searchTitle(title);
         console.log(result)
         
         setSearchData(result)

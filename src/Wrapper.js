@@ -1,10 +1,10 @@
 import React from 'react';
-import Search from './Search';
+import Homepage from './Homepage';
 
 function Wrapper(){
     return(
         <div className='wrapper'>
-            <Search />
+            <Homepage />
         </div>
     )
 }

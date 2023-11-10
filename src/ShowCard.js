@@ -1,5 +1,6 @@
 import React from 'react';
-import './ShowCard.css'
+import './ShowCard.css';
+import {Link} from 'react-router-dom'
 
 function ShowCard(show){
 
@@ -16,13 +17,14 @@ function ShowCard(show){
     const imgSrc = show.show.coverImage.extraLarge
     console.log(show)
     const title = checkTitle(show)
+    const id = show.show.id;
+    console.log(id)
     console.log(title)
     return(
         <div className='show-card'>
-            <a className='card-a'>
-            <img src={imgSrc} className='card-img' />
-            </a>
-            
+            <Link to={`/show/${id}`}>
+            <img src={imgSrc} alt={title} />
+      </Link>
             <p>{title}</p>
 
         </div>
