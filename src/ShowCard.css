@@ -1,20 +1,21 @@
-.show-card{
-    background-color: #ddd;
-    padding: 20px;
-    text-align: center;
-}
-
-.card-a{
-    height: auto;
+.card-container {
     display: grid;
-}
-
-.card-img{
-    height: 100%;
-    width: 100%;
-}
-
-
-
-
-
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .show-card {
+    border: 1px solid #ddd; /* Optional: Add a border for better separation */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .show-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .show-card p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
