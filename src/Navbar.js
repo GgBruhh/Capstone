@@ -10,15 +10,6 @@ function NavBar() {
         <NavLink exact to="/" className="navbar-brand">
           Anime Watchlist
         </NavLink>
-
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink to="/register">Register</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/login">Login</NavLink>
-          </NavItem>
-        </Nav>
       </Navbar>
     </div>
   );

@@ -20,7 +20,6 @@ function ShowList(rawData){
     const processedData = refineData(rawData)
     console.log(processedData)
     return (
-        <div className='card-list'>
         <div className='show-list'>
             {processedData ? (
             processedData.map((show, index) => (
@@ -29,7 +28,6 @@ function ShowList(rawData){
             ) : (
                 <p></p>
             )}
-        </div>
         </div>
     );
         }    

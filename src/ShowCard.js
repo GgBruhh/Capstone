@@ -21,14 +21,14 @@ function ShowCard(show){
     console.log(id)
     console.log(title)
     return(
-        <div class="card-container">
+        //<div class="card-container">
             <div class="show-card">
                 <Link to={`/show/${id}`}>
                 <img src={imgSrc} alt={title} />
                 </Link>
                 <p>{title}</p>
             </div>
-        </div>
+        //</div>
     )
 }
 

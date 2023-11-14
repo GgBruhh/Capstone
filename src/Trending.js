@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import AnilistApi from "./Api";
 import ShowCard from "./ShowCard";
-
+import './Trending.css'
 function Trending(){
 
     const [trendingShows, setTrendingShows] = useState([]);
@@ -44,6 +44,7 @@ function Trending(){
     return(
         <div>
             <h1>Trending Shows</h1>
+        <div className="trending-container">
             {show ? (
             show.map((show, index) => (
                 <ShowCard key={index} show={show}/>
@@ -51,6 +52,7 @@ function Trending(){
             ) : (
                 <p></p>
             )}
+        </div>
         </div>
     )
 }
