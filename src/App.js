@@ -13,8 +13,7 @@ function App() {
       <NavBar />
         <Routes>
           <Route path='/' exact Component={Wrapper}/>
-          <Route path="/login" Component={Login} />
-          <Route path="/register" Component={Register} />
+          {/* <Route path="/favorites" Component={Favorites} /> */}
           <Route path={`/show/:id`} Component={ShowDescription}/>
         </Routes>
       </Router>

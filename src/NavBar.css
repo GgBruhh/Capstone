@@ -12,6 +12,7 @@ nav {
 nav a {
   color: #f0f2f5;
   text-decoration: none;
+  padding: 10px;
 }
 
 nav a.active {
