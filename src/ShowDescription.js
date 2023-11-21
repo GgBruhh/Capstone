@@ -8,6 +8,7 @@ function ShowDescription(){
     const {id} = useParams();
     
     const [data, setData] = useState(null);
+    const [favorites, setFavorites] = useState();
 
     useEffect(() => {
         // Define an asynchronous function inside useEffect to handle the data retrieval
@@ -102,10 +103,38 @@ function ShowDescription(){
     // Applying the function to the description
     const cleanedDescription = removeHtmlTags(descriptionWithHtml);
     
-    // Print the cleaned description
-    console.log(cleanedDescription);
 
-    async function sendData(){
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/api/data');
+            const result = await response.json();
+            setFavorites(result);
+            console.log(result);
+          } catch (error) {
+            console.error('Error fetching data', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
+
+
+      function inFavorites(id) {
+        try {
+            if (favorites) {
+                return favorites.some((favorite) => id == favorite.show_id);
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error('Error checking favorites', error);
+            return false;
+        }
+    }
+    
+
+    async function addToFavorites(){
         try {
             const response = await fetch('http://localhost:5000/api/data', {
               method: 'POST',
@@ -127,12 +156,65 @@ function ShowDescription(){
             console.error('Error adding data', error);
           }
     }
+
+    async function changeStatus(e){
+        e.preventDefault()
+        const selectedOption = document.getElementById('dropdown').value
+
+        try {
+            const response = await fetch('http://localhost:5000/api/status', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                "show_name": `"${title}"`,
+                "show_id": `"${showId}"`,
+                "status": `${selectedOption}`
+            }),
+            });
+      
+            const addedData = await response.json();
+            console.log('Data added:', addedData);
+          } catch (error) {
+            console.error('Error adding data', error);
+          }
+    }
+
+    async function deleteShow(){
+        try {
+            const response = await fetch('http://localhost:5000/api/data', {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                "name": `"${title}"`
+            }),
+            });
+          } catch (error) {
+            console.error('Error adding data', error);
+          }
+    }
     
     return(
         <div>
             <h1>{title}</h1>
             <img src={imgSrc}/>
-            <button onClick={sendData}>Add to favorites</button><br/>
+            {inFavorites(showId) ? (
+            <button onClick={deleteShow}>Remove From Favorites</button>
+                                    ) : (
+            <button onClick={addToFavorites}>Add to favorites</button>
+            )}
+            <form onSubmit={changeStatus}>
+                <select id="dropdown" name="dropdown">
+                <option value="plan-to-watch">Plan To Watch</option>
+                <option value="watched">Watched</option>
+                </select>
+                <button>Add to list</button>
+            </form>
+            
+            <br/>
             <i>Description: {cleanedDescription}</i>
         </div>
     )
