@@ -1,10 +1,9 @@
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Wrapper from './Wrapper';
-import Login from './auth/Login';
-import Register from './auth/Register';
 import NavBar from './Navbar';
 import ShowDescription from './ShowDescription';
+import Favorites from './Favorites';
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
       <NavBar />
         <Routes>
           <Route path='/' exact Component={Wrapper}/>
-          {/* <Route path="/favorites" Component={Favorites} /> */}
+          <Route path="/favorites" Component={Favorites} />
           <Route path={`/show/:id`} Component={ShowDescription}/>
         </Routes>
       </Router>

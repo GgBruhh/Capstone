@@ -118,7 +118,6 @@ class AnilistApi {
         }
 
         function handleData(data) {
-            console.log(data);
             return data; // Return the data
         }
 
@@ -177,7 +176,6 @@ class AnilistApi {
         }
 
         function handleData(data) {
-            console.log(data);
             return data; // Return the data
         }
 

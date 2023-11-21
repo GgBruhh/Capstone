@@ -14,15 +14,12 @@ function ShowCard(show){
             return title;
         }
     }
-    const imgSrc = show.show.coverImage.extraLarge
-    console.log(show)
+    const imgSrc = show.show.coverImage.extraLarge;
     const title = checkTitle(show)
     const id = show.show.id;
-    console.log(id)
-    console.log(title)
     return(
         //<div class="card-container">
-            <div class="show-card">
+            <div className="show-card">
                 <Link to={`/show/${id}`}>
                 <img src={imgSrc} alt={title} />
                 </Link>

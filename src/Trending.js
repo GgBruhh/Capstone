@@ -11,7 +11,6 @@ function Trending(){
         const fetchData = async () => {
             try {
                 const result = await AnilistApi.trending();
-                console.log(result)
                 setTrendingShows(result);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -23,7 +22,6 @@ function Trending(){
         fetchData();
     }, [])
 
-    console.log(trendingShows);
 
 
     function checkData(){

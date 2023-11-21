@@ -3,7 +3,6 @@ import ShowCard from './ShowCard';
 import './ShowList.css'
 
 function ShowList(rawData){
-    console.log(rawData.rawData)
 
 
     function refineData(rawData){
@@ -18,7 +17,6 @@ function ShowList(rawData){
     }
 
     const processedData = refineData(rawData)
-    console.log(processedData)
     return (
         <div className='show-list'>
             {processedData ? (
