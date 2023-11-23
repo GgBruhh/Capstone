@@ -170,7 +170,8 @@ function ShowDescription(){
               body: JSON.stringify({
                 "show_name": `"${title}"`,
                 "show_id": `"${showId}"`,
-                "status": `${selectedOption}`
+                "status": `${selectedOption}`,
+                "img_src": `${imgSrc}`
             }),
             });
       

@@ -1,0 +1,21 @@
+.show-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .show-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .show-card p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .ani-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }

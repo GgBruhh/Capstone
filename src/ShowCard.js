@@ -18,14 +18,12 @@ function ShowCard(show){
     const title = checkTitle(show)
     const id = show.show.id;
     return(
-        //<div class="card-container">
             <div className="show-card">
                 <Link to={`/show/${id}`}>
                 <img src={imgSrc} alt={title} />
                 </Link>
                 <p>{title}</p>
             </div>
-        //</div>
     )
 }
 

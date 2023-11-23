@@ -1,6 +1,11 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+import "./AniCard.css"
 
-function FavoriteShow({name}){
+function FavoriteShow(show){
+
+  const {show_name, show_id, img_src} = show.show;
+    console.log(show_name)
 
     async function deleteShow(){
         try {
@@ -10,19 +15,24 @@ function FavoriteShow({name}){
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                "name": `"${name}"`
+                "name": `"${show_name}"`
             }),
             });
           } catch (error) {
             console.error('Error adding data', error);
           }
     }
-    console.log(name);
+
     return(
-        <div>
-            <p>{name}</p>
-            <button onClick={deleteShow}>Remove From Favorites</button>
-        </div>
+      <div className="ani-card-container">
+      <div className="show-card">
+          <Link to={`/show/${show_id}`}>
+          <img src={img_src} alt={show_name} />
+          </Link>
+          <p>{show_name}</p>
+          <button onClick={deleteShow}>Remove From Favorites</button>
+      </div>
+  </div>
     )
 }
 

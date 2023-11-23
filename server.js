@@ -74,9 +74,9 @@ app.get('/api/data', async (req, res) => {
   });
 
 
-//add a status to the show
+//add or update a status to the show
   app.post('/api/status', async (req, res) => {
-    const {show_name, show_id, status} = req.body;
+    const {show_name, show_id, status, img_src} = req.body;
       const cleanedShowName = show_name.replace(/"/g, '');
       const cleanedShowId = show_id.replace(/"/g, '');
 
@@ -102,8 +102,8 @@ app.get('/api/data', async (req, res) => {
           }else {
         // If the show doesn't exist, add a new row
         const query = {
-              text: 'INSERT INTO status(show_id, status, show_name) VALUES($1, $2, $3)',
-              values: [cleanedShowId, status, cleanedShowName,],
+              text: 'INSERT INTO status(show_id, status, show_name, img_src) VALUES($1, $2, $3, $4)',
+              values: [cleanedShowId, status, cleanedShowName, img_src],
             };
             console.log({cleanedShowName, cleanedShowId})
             const client = await pool.connect();
@@ -115,23 +115,6 @@ app.get('/api/data', async (req, res) => {
       console.error('Error executing query', error);
       res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
-    // try {
-    //   const {show_name, show_id, status} = req.body;
-    //   const cleanedShowName = show_name.replace(/"/g, '');
-    //   const cleanedShowId = show_id.replace(/"/g, '');
-    //   const query = {
-    //     text: 'INSERT INTO status(show_id, status, show_name) VALUES($1, $2, $3)',
-    //     values: [cleanedShowId, status, cleanedShowName,],
-    //   };
-    //   console.log({cleanedShowName, cleanedShowId})
-    //   const client = await pool.connect();
-    //   const result = await client.query(query);
-    //   client.release();
-  
-    // } catch (error) {
-    //   console.error('Error executing query', error);
-    //   res.status(500).send('Internal Server Error');
-    // }
   });
 
   
@@ -151,3 +134,30 @@ app.get('/api/data', async (req, res) => {
   })
 
 
+  app.get('/api/status/plan-to-watch', async(req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query("SELECT * FROM status WHERE status = 'plan-to-watch'");
+      const data = result.rows;
+      client.release();
+  
+      return res.json(data);
+    } catch (error) {
+      console.error('Error executing query', error);
+      res.status(500).send('Internal Server Error');
+    }
+  })
+
+  app.get('/api/status/watched', async(req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query("SELECT * FROM status WHERE status = 'watched'");
+      const data = result.rows;
+      client.release();
+  
+      return res.json(data);
+    } catch (error) {
+      console.error('Error executing query', error);
+      res.status(500).send('Internal Server Error');
+    }
+  })

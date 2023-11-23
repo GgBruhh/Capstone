@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FavoriteShow from "./FavoriteShow";
+import AniCard from "./AniCard";
 
 function Favorites() {
   const [data, setData] = useState([]);
@@ -19,15 +20,29 @@ function Favorites() {
     fetchData();
   }, []); // Empty dependency array to ensure the effect runs once on mount
 
+  async function deleteShow(name){
+    try {
+        const response = await fetch('http://localhost:5000/api/data', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "name": `"${name}"`
+        }),
+        });
+      } catch (error) {
+        console.error('Error adding data', error);
+      }
+}
+
   return (
     <div>
       <h1>Favorites</h1>
-      <ul>
         {data.map(item => (
-            <FavoriteShow key={item.id} name={item.show_name} />
-          // <li key={item.id}>{item.show_name}</li>
+            <FavoriteShow key={item.show_id} show={item}/>
         ))}
-      </ul>
+        
     </div>
   );
 }

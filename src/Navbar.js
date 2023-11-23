@@ -13,6 +13,12 @@ function NavBar() {
         <NavLink exact to="/favorites" className="navbar-brand">
           Favorites
         </NavLink>
+        <NavLink exact to="/plan-to-watch" className="navbar-brand">
+          Planned to watch
+        </NavLink>
+        <NavLink exact to="/watched" className="navbar-brand">
+          Watched
+        </NavLink>
       </Navbar>
     </div>
   );
