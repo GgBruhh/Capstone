@@ -7,6 +7,7 @@ function FavoriteShow(show){
   const {show_name, show_id, img_src} = show.show;
     console.log(show_name)
 
+    //sends query to local API to remove the show from favorites list in psql db
     async function deleteShow(){
         try {
             const response = await fetch('http://localhost:5000/api/data', {

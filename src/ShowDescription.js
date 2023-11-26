@@ -133,7 +133,7 @@ function ShowDescription(){
         }
     }
     
-
+    // add show to favorites list in PSQL db 
     async function addToFavorites(){
         try {
             const response = await fetch('http://localhost:5000/api/data', {
@@ -157,6 +157,7 @@ function ShowDescription(){
           }
     }
 
+    //changes status from either planned to watch to watched or visa versa, but will not allow show to have both status'
     async function changeStatus(e){
         e.preventDefault()
         const selectedOption = document.getElementById('dropdown').value
@@ -182,6 +183,7 @@ function ShowDescription(){
           }
     }
 
+    //remove show from favorites list
     async function deleteShow(){
         try {
             const response = await fetch('http://localhost:5000/api/data', {

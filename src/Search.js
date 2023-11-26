@@ -13,7 +13,7 @@ function Search(){
         setFormData({ search: e.target.value });
     }
 
-
+    //gather user input and send to local API for results to render
     async function handleSubmit(e){
         e.preventDefault();
         console.log(formData);

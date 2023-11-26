@@ -23,6 +23,7 @@ function Trending(){
     }, [])
 
 
+    //checks if there is any data when loaded
 
     function checkData(){
         if(trendingShows && trendingShows.data && 

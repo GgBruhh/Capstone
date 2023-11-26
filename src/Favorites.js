@@ -20,20 +20,6 @@ function Favorites() {
     fetchData();
   }, []); // Empty dependency array to ensure the effect runs once on mount
 
-  async function deleteShow(name){
-    try {
-        const response = await fetch('http://localhost:5000/api/data', {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "name": `"${name}"`
-        }),
-        });
-      } catch (error) {
-        console.error('Error adding data', error);
-      }
 }
 
   return (

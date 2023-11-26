@@ -7,6 +7,7 @@ function Planned(){
     const [data, setData] = useState([]);
 
   useEffect(() => {
+    //fetches 'Planned to watch' shows from psql db
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/status/plan-to-watch');

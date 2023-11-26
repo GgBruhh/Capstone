@@ -6,6 +6,7 @@ function Watched(){
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    //fetches shows that are in the watched list in psql database
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/status/watched');

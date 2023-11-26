@@ -13,6 +13,7 @@ app.listen(PORT, () => {
 app.use(cors());
 app.use(express.json());
 
+//connect to the database
 const pool = new Pool({
   user: 'camryn',
   host: 'localhost',
@@ -21,7 +22,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-
+//query the database to get favorite shows
 app.get('/api/data', async (req, res) => {
     try {
       const client = await pool.connect();
@@ -36,6 +37,7 @@ app.get('/api/data', async (req, res) => {
     }
   });
 
+  //gets the status of a show whether it is planned-to-watch or watched
   app.get('/api/status', async (req, res) => {
     try {
       const client = await pool.connect();
@@ -118,6 +120,7 @@ app.get('/api/data', async (req, res) => {
   });
 
   
+  //delete show from the favorites list
   app.delete('/api/data', async (req, res) => {
     try{
       const {name} = req.body
@@ -133,7 +136,7 @@ app.get('/api/data', async (req, res) => {
     }
   })
 
-
+  //query the database to render shows in the plan-to-watch list
   app.get('/api/status/plan-to-watch', async(req, res) => {
     try {
       const client = await pool.connect();
@@ -148,6 +151,7 @@ app.get('/api/data', async (req, res) => {
     }
   })
 
+  //query the database to render shows in the watched list
   app.get('/api/status/watched', async(req, res) => {
     try {
       const client = await pool.connect();

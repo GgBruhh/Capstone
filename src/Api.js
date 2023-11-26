@@ -3,7 +3,10 @@ import axios from "axios";
 
 const BASE_API_URL = 'https://graphql.anilist.co';
 
+
+//Api to handle queries to the external API
 class AnilistApi {
+    //Search Funciton from user input
     static async searchTitle(title) {
         const query = `
             query {
@@ -67,6 +70,7 @@ class AnilistApi {
         }
     }
 
+    //Searches for ID of input show to return show details for the 'ShowDescription' component
     static async searchId(id) {
         const query = `
             query {
@@ -127,6 +131,7 @@ class AnilistApi {
         }
     }
 
+    //Queries top 100 trending shows at the time to render on the homepage
     static async trending() {
         const query = `
         query {
